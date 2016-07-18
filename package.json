@@ -7,7 +7,9 @@
     "i2c": "0.2.3",
     "oled-font-5x7": "1.0.0",
     "png-to-lcd": "1.0.3",
-    "pngparse": "2.0.1"
+    "pngparse": "2.0.1",
+    "spi": "^0.2.0",
+    "wiring-pi": "^2.1.1"
   },
   "devDependencies": {
     "oled-font-5x7": "~1.0.0",

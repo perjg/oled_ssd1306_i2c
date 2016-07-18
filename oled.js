@@ -6,11 +6,26 @@ var Oled = function(opts) {
     opts = {}
   }
 
+  /*
+  var spi = new SPI.Spi('/dev/spidev0.0', {
+    'mode': SPI.MODE['MODE_0'],  // always set mode as the first option
+    'chipSelect': SPI.CS['none'] // 'none', 'high' - defaults to low
+  }, function(s){s.open();});
+  */
+
   this.HEIGHT = opts.height || 32;
   this.WIDTH = opts.width || 128;
   this.ADDRESS = opts.address || 0x3C;
-  this.DEVICE = opts.device || '/dev/i2c-1';
+  this.PROTOCOL = opts.protocol || 'I2C';
+	this.DEVICE = opts.device || '/dev/i2c-1';
+
+  if (this.PROTOCOL === 'SPI') {
+    this.DEVICE = opts.device || '/dev/spidev0.0';
+  }
+
   this.MICROVIEW = opts.microview || false;
+  this.DCPIN = opts.dcPin || 24;
+  this.RESETPIN = opts.resetPin || 23;
 
   // create command buffers
   this.DISPLAY_OFF = 0xAE;
