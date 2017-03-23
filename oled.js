@@ -26,7 +26,7 @@ var Oled = function(opts) {
   this.COM_SCAN_INC = 0xC0;
   this.SET_COM_PINS = 0xDA;
   this.SET_CONTRAST = 0x81;
-  this.SET_PRECHARGE = 0xd9;
+  this.SET_PRECHARGE = 0xD9;
   this.SET_VCOM_DETECT = 0xDB;
   this.DISPLAY_ALL_ON_RESUME = 0xA4;
   this.NORMAL_DISPLAY = 0xA6;
@@ -148,12 +148,12 @@ Oled.prototype._waitUntilReady = function(callback) {
         // if not busy, it's ready for callback
         callback();
       } else {
-        setTimeout(tick, 0);
+        setTimeout(function(){tick(callback)}, 0);
       }
     });
   }
 
-  setTimeout(tick(callback), 0);
+  setTimeout(function(){tick(callback)}, 0);
 };
 
 // set starting position of a text string on the oled
