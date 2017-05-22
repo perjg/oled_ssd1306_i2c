@@ -153,7 +153,7 @@ Oled.prototype._waitUntilReady = function(callback) {
     });
   }
 
-  setTimeout({
+  setTimeout(function{
     tick(callback);
   }, 0);
 };
